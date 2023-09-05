@@ -16,8 +16,35 @@
         android:theme="@style/Theme.YBOOK"
         tools:targetApi="31">
         <activity
-            android:name=".PaginaPrincipal"
+            android:name=".Informacion_usuario"
             android:exported="false" />
+        <activity
+            android:name=".Informacion_autores"
+            android:exported="false" />
+        <activity
+            android:name=".calendarFecha"
+            android:exported="false" />
+        <activity
+            android:name=".Add_NuevoLibro"
+            android:exported="false" />
+        <activity
+            android:name=".autores"
+            android:exported="false" />
+        <activity
+            android:name=".ajustes"
+            android:exported="false" />
+        <activity
+            android:name=".usuarios"
+            android:exported="false" />
+        <activity
+            android:name=".libros"
+            android:exported="false" />
+        <activity
+            android:name=".Informacion_libro"
+            android:exported="false" />
+        <activity
+            android:name=".PaginaPrincipal"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
