@@ -47,13 +47,14 @@ public class autores extends AppCompatActivity implements AdaptadorAutores.OnAut
                 ResultSet rs = stm.executeQuery("SELECT * FROM Autores");
 
                 while(rs.next()){
+                    int id = rs.getInt(1);
                     String nombre = rs.getString(2);
                     String apellidos = rs.getString(3);
                     String nacionalidad = rs.getString(4);
                     String fechaNacimiento =rs.getString(5);
                     String fechaFallecimiento =rs.getString(6);
 
-                    elements.add(new ListElementAutores(nombre));
+                    elements.add(new ListElementAutores(nombre,id));
                 }
             }
 

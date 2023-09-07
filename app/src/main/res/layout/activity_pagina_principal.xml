@@ -45,7 +45,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/Libros"
-                app:cardBackgroundColor="#CE88E6A8"
+                app:cardBackgroundColor="#CE5BFB92"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"

@@ -1,6 +1,9 @@
 package com.example.ybook.adapters;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +65,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         void binData(final ListElementLibros item){
             titulo.setText(item.getTitulo());
             editorial.setText(item.getEditorial());
-            autor.setText(item.getAutor());
+            Log.d(TAG, "binData: call" + item.getAutor());
+            autor.setText(String.valueOf(item.getAutor()));
 
         }
 

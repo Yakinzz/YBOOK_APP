@@ -92,18 +92,4 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
         startActivity(intent);
     }
 
-
-
-
-    /*public void onUsuarioClick(int position) {
-        Log.d(TAG, "onUsuarioClick: clicked");
-
-        ListElementUsuarios elemento = elements.get(position);
-
-        Intent intent = new Intent(this,Informacion_usuario.class);
-        intent.putExtra("username",elemento.getUsername());
-        //Log.d(TAG, "onLibroClick: titulo" + elemento.no());
-        startActivity(intent);
-    }*/
-
 }

@@ -54,11 +54,13 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
                 Statement stm = conexionBD().createStatement();
                 ResultSet rs = stm.executeQuery("SELECT * FROM Libros");
 
+                Boolean encontrado = false;
+
                 while(rs.next()){
                     String titulo = rs.getString(2);
                     String editorial = rs.getString(5);
                     int idAutor = rs.getInt(3);
-                    String autor = "null";
+
 
                     try {
                         if(conn!=null){
@@ -68,7 +70,7 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
                             if(rs2.next()){
                                 int id = rs2.getInt(1);
                                 if(id==idAutor){
-                                    autor=rs2.getString(2);
+                                    encontrado=true;
                                 }
                             }
                         }
@@ -77,8 +79,10 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
                         Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA DEL AUTOR",Toast.LENGTH_SHORT).show();
                     }
 
+                    if(encontrado){
+                        elements.add(new ListElementLibros(titulo,editorial,idAutor));
+                    }
 
-                    elements.add(new ListElementLibros(titulo,editorial,autor));
                 }
             }
 
@@ -115,6 +119,7 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
 
         Intent intent = new Intent(this,Informacion_libro.class);
         intent.putExtra("titulo",elemento.getTitulo());
+        intent.putExtra("idAutor",elemento.getAutor());
         Log.d(TAG, "onLibroClick: titulo" + elemento.getTitulo());
         startActivity(intent);
 

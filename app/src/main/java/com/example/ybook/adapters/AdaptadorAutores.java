@@ -61,7 +61,7 @@ public class AdaptadorAutores extends RecyclerView.Adapter<AdaptadorAutores.View
         }
 
         void binData(final ListElementAutores item) {
-            nombreAutor.setText(item.getNombreAutor());
+            nombreAutor.setText(String.valueOf(item.getIdAutor()));
 
         }
 

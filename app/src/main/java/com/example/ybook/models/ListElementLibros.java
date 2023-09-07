@@ -6,10 +6,10 @@ public class ListElementLibros implements Serializable {
 
     public String titulo;
     public String editorial;
-    public String autor;
+    public int autor;
 
 
-    public ListElementLibros(String titulo, String eidtorial, String autor) {
+    public ListElementLibros(String titulo, String eidtorial, int autor) {
         this.titulo = titulo;
         this.editorial = eidtorial;
         this.autor = autor;
@@ -32,11 +32,11 @@ public class ListElementLibros implements Serializable {
         this.editorial = editorial;
     }
 
-    public String getAutor() {
+    public int getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(int autor) {
         this.autor = autor;
     }
 
