@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Informacion_libro"
+    tools:context=".LIBROS.Informacion_libro"
     android:background="#9AFA60">
 
 
@@ -18,10 +18,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center"
         android:layout_above="@id/card_view"
-        android:padding="10dp">
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,19 @@
             android:textStyle="bold"
             android:fontFamily="@font/alata"
             android:textSize="32sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:paddingRight="50dp"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEliminarLibro"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#E4FA6E6E"></Button>
 
 
     </LinearLayout>
@@ -220,7 +232,7 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="ACEPTAR"
+            android:text="ACTUALIZAR"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:backgroundTint="#AAFAA1"
@@ -228,7 +240,7 @@
             android:layout_marginTop="605dp"
             android:layout_marginLeft="60dp"
             android:visibility="gone"
-            android:id="@+id/btnAceptarCambios"
+            android:id="@+id/btnActualizarCambios"
             />
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"

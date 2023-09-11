@@ -6,7 +6,7 @@
     app:cardElevation="4dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    android:backgroundTint="#C87EF6"
+    android:backgroundTint="#9496FB"
     app:cardCornerRadius="20dp"
     android:id="@+id/card_usuario_general">
 

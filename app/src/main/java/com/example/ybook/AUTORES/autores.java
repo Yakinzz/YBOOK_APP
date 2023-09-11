@@ -1,21 +1,23 @@
-package com.example.ybook;
+package com.example.ybook.AUTORES;
 
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.ybook.adapters.AdaptadorUsuarios;
+import com.example.ybook.AUTORES.Informacion_autores;
+import com.example.ybook.R;
+import com.example.ybook.adapters.AdaptadorAutores;
 import com.example.ybook.models.ListElementAutores;
-import com.example.ybook.models.ListElementUsuarios;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,13 +26,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnUsuariosListener {
+public class autores extends AppCompatActivity implements AdaptadorAutores.OnAutorListener {
 
-    List<ListElementUsuarios> elements;
+    List<ListElementAutores> elements;
+
+    FloatingActionButton btnNuevoAutor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuarios);
+        setContentView(R.layout.activity_autores);
+
+        btnNuevoAutor = findViewById(R.id.btnNuevoAutor);
+        btnNuevoAutor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(autores.this, Add_NuevoAutor.class);
+                //intent.putExtra("idAutor",elemento.getIdAutor());
+                //Log.d(TAG, "onLibroClick: titulo" + elemento.no());
+                startActivity(intent);
+            }
+        });
+
         init();
     }
 
@@ -42,16 +58,17 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
         try {
             if(conn!=null){
                 Statement stm = conexionBD().createStatement();
-                ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE ROL='Usuario'");
+                ResultSet rs = stm.executeQuery("SELECT * FROM Autores");
 
                 while(rs.next()){
+                    int id = rs.getInt(1);
                     String nombre = rs.getString(2);
                     String apellidos = rs.getString(3);
-                    String email = rs.getString(4);
+                    String nacionalidad = rs.getString(4);
                     String fechaNacimiento =rs.getString(5);
-                    String username =rs.getString(9);
+                    String fechaFallecimiento =rs.getString(6);
 
-                    elements.add(new ListElementUsuarios(username,email));
+                    elements.add(new ListElementAutores(nombre,id));
                 }
             }
 
@@ -59,10 +76,10 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
             Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
         }
 
-        AdaptadorUsuarios listAdapter = new AdaptadorUsuarios(elements,this,this);
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewUsuarios);
+        AdaptadorAutores listAdapter = new AdaptadorAutores(elements,this,this);
+        RecyclerView recyclerView = findViewById(R.id.listaautores);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(listAdapter);
 
     }
@@ -81,15 +98,15 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
     }
 
     @Override
-    public void onUsuarioClick(int position) {
-        Log.d(TAG, "onUsuarioClick: clicked");
+    public void onAutorClick(int position) {
+        Log.d(TAG, "onAutorClick: clicked");
 
-        ListElementUsuarios elemento = elements.get(position);
+        ListElementAutores elemento = elements.get(position);
 
-        Intent intent = new Intent(this,Informacion_usuario.class);
-        intent.putExtra("username",elemento.getUsername());
+        Intent intent = new Intent(this, Informacion_autores.class);
+        intent.putExtra("nombre",elemento.getNombreAutor());
+        intent.putExtra("idAutor",elemento.getIdAutor());
         //Log.d(TAG, "onLibroClick: titulo" + elemento.no());
         startActivity(intent);
     }
-
 }

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.CalendarView;
 
+import com.example.ybook.LIBROS.Informacion_libro;
+
 public class calendarFecha extends AppCompatActivity {
 
     @Override
@@ -23,7 +25,7 @@ public class calendarFecha extends AppCompatActivity {
                 String date = i + "/" + i1 + "/" + i2;
                 Log.d(TAG, "onSelectedDayChange: date" + date);
 
-                Intent intent = new Intent(calendarFecha.this,Informacion_libro.class);
+                Intent intent = new Intent(calendarFecha.this, Informacion_libro.class);
                 intent.putExtra("date",date);
                 startActivity(intent);
             }

@@ -17,13 +17,13 @@ import com.example.ybook.R;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class AdaptadorLibros extends RecyclerView.Adapter<AdaptadorLibros.ViewHolder> {
     List<ListElementLibros> mData;
     OnLibroListener onLibroListener;
     LayoutInflater mInflater;
     Context context;
 
-    public MyAdapter(List<ListElementLibros> itemList, Context context, OnLibroListener onLibroListener){
+    public AdaptadorLibros(List<ListElementLibros> itemList, Context context, OnLibroListener onLibroListener){
         this.mInflater = LayoutInflater.from(context);
         this.mData = itemList;
         this.context=context;
@@ -31,13 +31,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdaptadorLibros.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.listelement,null);
-        return new MyAdapter.ViewHolder(view,onLibroListener);
+        return new AdaptadorLibros.ViewHolder(view,onLibroListener);
     }
 
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(AdaptadorLibros.ViewHolder holder, int position) {
         holder.binData(mData.get(position));
 
     }

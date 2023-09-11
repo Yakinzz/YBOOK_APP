@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CE5BFB92"
-    tools:context=".PaginaPrincipal">
+    android:background="#FD9BD6"
+    tools:context=".AUTORES.Add_NuevoAutor">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,11 +23,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NUEVO LIBRO"
+            android:text="NUEVO AUTOR"
             android:textStyle="bold"
             android:fontFamily="@font/alata"
             android:textSize="32sp"
-            android:textColor="#314BE4"/>
+            android:textColor="@color/black"></TextView>
 
 
     </LinearLayout>
@@ -52,12 +52,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Titulo"
+                android:text="Nombre"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtTitulo2"
+                android:id="@+id/txtNombreNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -70,12 +70,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Editorial"
+                android:text="Apellidos"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtEditorial2"
+                android:id="@+id/txtApellidosNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -88,12 +88,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Idioma"
+                android:text="Nacionalidad"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtIdioma2"
+                android:id="@+id/txtNacionalidadNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -105,15 +105,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Categoria"
+                android:text="Fecha Nacimiento"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtCategoria2"
+                android:id="@+id/txtFechaNacimientoNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
@@ -122,71 +123,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Autor"
+                android:text="¿Ha fallecido?"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtAutor2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="170dp"
-                    android:layout_height="65dp"
-                    android:layout_marginRight="15dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_fallecidoSInuevo"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:text="Numero Páginas"
-                        android:fontFamily="@font/alata"
-                        android:textStyle="bold" />
+                        android:layout_marginRight="50dp"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:text="SI"></RadioButton>
 
-                    <EditText
-                        android:id="@+id/txtNumeroPaginas2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="number" />
-
-                    <EditText
-                        android:id="@+id/txtNumeroPaginas23"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="number" />
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="170dp"
-                    android:layout_height="65dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    <RadioButton
+                        android:id="@+id/rb_fallecidoNOnuevo"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:text="Fecha Publicacion"
-                        android:fontFamily="@font/alata"
-                        android:textStyle="bold" />
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:text="NO"></RadioButton>
+                </RadioGroup>
 
-                    <EditText
-                        android:id="@+id/txtFechaPublicacion2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="date" />
-
-                </RelativeLayout>
 
             </LinearLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Fecha Fallecimiento"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtFechaFallecimientoNuevoAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
 
 
@@ -197,11 +182,11 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="CREAR LIBRO"
-                android:textSize="18dp"
-                android:textColor="#314BE4"
+                android:text="CREAR AUTOR"
+                android:backgroundTint="#FD9BD6"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:backgroundTint="#CE5BFB92"
+                android:textSize="18dp"
                 app:cornerRadius="32dp" />
 
         </LinearLayout>

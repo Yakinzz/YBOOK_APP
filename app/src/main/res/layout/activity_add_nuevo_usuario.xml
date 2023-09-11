@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CE5BFB92"
-    tools:context=".PaginaPrincipal">
+    android:background="#9496FB">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,18 +22,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NUEVO LIBRO"
+            android:text="NUEVO USUARIO"
             android:textStyle="bold"
             android:fontFamily="@font/alata"
             android:textSize="32sp"
-            android:textColor="#314BE4"/>
+            android:textColor="@color/black"/>
 
 
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="710dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-20dp"
         app:cardCornerRadius="28dp"
@@ -52,12 +51,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Titulo"
+                android:text="Nombre"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtTitulo2"
+                android:id="@+id/txtNombre2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -70,12 +69,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Editorial"
+                android:text="Apellidos"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtEditorial2"
+                android:id="@+id/txtApellidos2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -88,12 +87,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Idioma"
+                android:text="Email"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtIdioma2"
+                android:id="@+id/txtEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -105,12 +104,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Categoria"
+                android:text="Teléfono"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtCategoria2"
+                android:id="@+id/txtTelefono2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -122,12 +121,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Autor"
+                android:text="Nacionalidad"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtAutor2"
+                android:id="@+id/txtNacionalidad2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -149,18 +148,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.7"
-                        android:text="Numero Páginas"
+                        android:text="Género"
                         android:fontFamily="@font/alata"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/txtNumeroPaginas2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/txtNumeroPaginas23"
+                        android:id="@+id/txtGenero2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="number" />
@@ -174,7 +168,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="0.7"
-                        android:text="Fecha Publicacion"
+                        android:text="Fecha Nacimiento"
                         android:fontFamily="@font/alata"
                         android:textStyle="bold" />
 
@@ -192,17 +186,39 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+                android:layout_height="20dp" />
 
-            <com.google.android.material.button.MaterialButton
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Username"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtUsername2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="CREAR LIBRO"
-                android:textSize="18dp"
-                android:textColor="#314BE4"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCrearNuevoUsuario"
+                android:backgroundTint="#9496FB"
+                android:textSize="16dp"
+                android:text="CREAR USUARIO"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:backgroundTint="#CE5BFB92"
-                app:cornerRadius="32dp" />
+                android:layout_gravity="center_horizontal"></Button>
+
+
+
 
         </LinearLayout>
 

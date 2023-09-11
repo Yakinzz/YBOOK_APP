@@ -1,14 +1,16 @@
-package com.example.ybook;
+package com.example.ybook.AJUSTES;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Informacion_autores extends AppCompatActivity {
+import com.example.ybook.R;
+
+public class ajustes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informacion_autores);
+        setContentView(R.layout.activity_ajustes);
     }
 }

@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Informacion_usuario"
+    tools:context=".USUARIOS.Informacion_usuario"
     android:background="#9BDCFA">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center"
         android:layout_above="@id/card_view"
         android:padding="10dp">
@@ -26,23 +25,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DATOS  USUARIO"
+            android:text="DATOS USUARIO"
             android:textStyle="bold"
             android:fontFamily="@font/alata"
             android:textSize="32sp"
             android:textColor="#000000"/>
-
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEliminarUsuario"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#E4FA4B4B"></Button>
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="715dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-20dp"
-        app:cardCornerRadius="28dp"
-        android:id="@+id/card_view"
-        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="715dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-20dp"
+            app:cardCornerRadius="28dp"
+            android:id="@+id/card_view">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,6 +92,9 @@
                 android:id="@+id/txtApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
                 android:inputType="text" />
 
             <View
@@ -103,6 +113,9 @@
                 android:id="@+id/txtNacionalidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
                 android:inputType="text" />
             <View
                 android:layout_width="wrap_content"
@@ -120,6 +133,9 @@
                 android:id="@+id/txtEmailUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
                 android:inputType="textEmailAddress" />
             <View
                 android:layout_width="wrap_content"
@@ -137,6 +153,9 @@
                 android:id="@+id/txtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
                 android:inputType="text" />
             <View
                 android:layout_width="wrap_content"
@@ -164,6 +183,9 @@
                         android:id="@+id/txtGenero"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:focusable="false"
                         android:inputType="text" />
 
                 </RelativeLayout>
@@ -180,7 +202,6 @@
                         android:id="@+id/btnResetearPasswordUsuario"/>
 
                 </RelativeLayout>
-
             </LinearLayout>
 
             <View
@@ -209,8 +230,10 @@
                         android:id="@+id/txtTelefono"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:focusable="false"
                         android:inputType="number" />
-
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -229,19 +252,17 @@
                         android:id="@+id/txtFechaNacimientoUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:focusable="false"
                         android:inputType="date" />
 
                 </RelativeLayout>
-
             </LinearLayout>
-
-
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
-
-
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
@@ -255,8 +276,32 @@
 
         </LinearLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="ACTUALIZAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#AAFAA1"
+            app:cornerRadius="32dp"
+            android:layout_marginTop="605dp"
+            android:layout_marginLeft="60dp"
+            android:visibility="gone"
+            android:id="@+id/btnActualizarCambios"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="CANCELAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#FF9195"
+            app:cornerRadius="32dp"
+            android:layout_marginTop="605dp"
+            android:layout_marginLeft="250dp"
+            android:visibility="gone"
+            android:id="@+id/btnCancelarCambios"
+            />
 
     </androidx.cardview.widget.CardView>
-
-
 </RelativeLayout>

@@ -1,9 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Informacion_autores">
+    tools:context=".AUTORES.Informacion_autores"
+    android:background="#FD9BD6">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_above="@id/card_view"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATOS AUTOR"
+            android:textStyle="bold"
+            android:fontFamily="@font/alata"
+            android:textSize="32sp"
+            android:textColor="#000000"
+            android:paddingRight="50dp"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEliminarAutor"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#E4FA4B4B"></Button>
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="715dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-20dp"
+        app:cardCornerRadius="28dp"
+        android:id="@+id/card_view"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Nombre"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/txtNombreAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="text" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Apellidos"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtApellidosAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="text" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Nacionalidad"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtNacionalidadAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="text" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Fecha de Nacimiento"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtFechaNacimientoAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="datetime" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="¿Ha fallecido?"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_fallecidoSI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:text="SI"></RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/rb_fallecidoNO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:text="NO"></RadioButton>
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Fecha de Fallecimiento"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold"
+                android:id="@+id/labelFallecido"/>
+
+            <EditText
+                android:id="@+id/txtFechaFallecimientoAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="datetime" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="EDITAR AUTOR"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="#FD9BD6"
+                app:cornerRadius="32dp"
+                android:id="@+id/btnEditarInfoAutor"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="ACTUALIZAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#AAFAA1"
+            app:cornerRadius="32dp"
+            android:layout_marginTop="605dp"
+            android:layout_marginLeft="60dp"
+            android:visibility="gone"
+            android:id="@+id/btnActualizarCambios"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="CANCELAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#FF9195"
+            app:cornerRadius="32dp"
+            android:layout_marginTop="605dp"
+            android:layout_marginLeft="250dp"
+            android:visibility="gone"
+            android:id="@+id/btnCancelarCambios"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

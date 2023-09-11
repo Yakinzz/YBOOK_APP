@@ -33,13 +33,13 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
         Intent i;
         int id = v.getId();
         if(id == R.id.Libros){
-            i=new Intent(this, libros.class); startActivity(i);
+            i=new Intent(this, com.example.ybook.LIBROS.libros.class); startActivity(i);
         } else if (id == R.id.Usuarios) {
-            i=new Intent(this,usuarios.class); startActivity(i);
+            i=new Intent(this, com.example.ybook.USUARIOS.usuarios.class); startActivity(i);
         }else if (id == R.id.Autores) {
-            i=new Intent(this,autores.class); startActivity(i);
+            i=new Intent(this, com.example.ybook.AUTORES.autores.class); startActivity(i);
         }else if (id == R.id.Ajustes) {
-            i=new Intent(this,ajustes.class); startActivity(i);
+            i=new Intent(this, com.example.ybook.AJUSTES.ajustes.class); startActivity(i);
         }
 
     }

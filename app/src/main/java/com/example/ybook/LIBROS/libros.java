@@ -1,4 +1,4 @@
-package com.example.ybook;
+package com.example.ybook.LIBROS;
 
 import static android.content.ContentValues.TAG;
 
@@ -13,7 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.ybook.adapters.MyAdapter;
+import com.example.ybook.R;
+import com.example.ybook.adapters.AdaptadorLibros;
 import com.example.ybook.models.ListElementLibros;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,8 +25,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class libros extends AppCompatActivity implements MyAdapter.OnLibroListener {
+public class libros extends AppCompatActivity implements AdaptadorLibros.OnLibroListener {
     List<ListElementLibros> elements;
+    int idLibro=0;
     FloatingActionButton addLibro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
         addLibro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(libros.this,Add_NuevoLibro.class);
+                Intent intent = new Intent(libros.this, Add_NuevoLibro.class);
                 startActivity(intent);
             }
         });
@@ -59,6 +61,7 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
                 while(rs.next()){
                     String titulo = rs.getString(2);
                     String editorial = rs.getString(5);
+                    idLibro=rs.getInt(1);
                     int idAutor = rs.getInt(3);
 
 
@@ -90,7 +93,7 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
             Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
         }
 
-        MyAdapter listAdapter = new MyAdapter(elements,this,this);
+        AdaptadorLibros listAdapter = new AdaptadorLibros(elements,this,this);
         RecyclerView recyclerView = findViewById(R.id.listaLibros);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -117,9 +120,10 @@ public class libros extends AppCompatActivity implements MyAdapter.OnLibroListen
 
         ListElementLibros elemento = elements.get(position);
 
-        Intent intent = new Intent(this,Informacion_libro.class);
+        Intent intent = new Intent(this, Informacion_libro.class);
         intent.putExtra("titulo",elemento.getTitulo());
         intent.putExtra("idAutor",elemento.getAutor());
+        intent.putExtra("idLibro",idLibro);
         Log.d(TAG, "onLibroClick: titulo" + elemento.getTitulo());
         startActivity(intent);
 
