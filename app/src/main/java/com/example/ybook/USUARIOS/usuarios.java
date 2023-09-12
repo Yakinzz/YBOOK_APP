@@ -28,15 +28,16 @@ import java.util.List;
 public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnUsuariosListener {
 
     List<ListElementUsuarios> elements;
-    FloatingActionButton btnAddLibro;
+    FloatingActionButton btnAddUsuario;
+    int idUsuario=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios);
         init();
 
-        btnAddLibro=findViewById(R.id.btnNuevoUsuario);
-        btnAddLibro.setOnClickListener(new View.OnClickListener() {
+        btnAddUsuario =findViewById(R.id.btnNuevoUsuario);
+        btnAddUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(usuarios.this, Add_NuevoUsuario.class);
@@ -49,9 +50,6 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
     public  void  init(){
         elements = new ArrayList<>();
 
-
-
-
         Connection conn = conexionBD();
         try {
             if(conn!=null){
@@ -59,6 +57,7 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
                 ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE ROL='Usuario'");
 
                 while(rs.next()){
+                    idUsuario = rs.getInt(1);
                     String nombre = rs.getString(2);
                     String apellidos = rs.getString(3);
                     String email = rs.getString(4);
@@ -105,6 +104,7 @@ public class usuarios extends AppCompatActivity implements AdaptadorUsuarios.OnU
 
         Intent intent = new Intent(this, Informacion_usuario.class);
         intent.putExtra("username",elemento.getUsername());
+        intent.putExtra("id",idUsuario);
         //Log.d(TAG, "onLibroClick: titulo" + elemento.no());
         startActivity(intent);
     }
