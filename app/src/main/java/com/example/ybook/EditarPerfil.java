@@ -1,25 +1,19 @@
-package com.example.ybook.USUARIOS;
+package com.example.ybook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ybook.Entidades.Libro;
 import com.example.ybook.Entidades.Usuario;
-import com.example.ybook.LIBROS.Informacion_libro;
-import com.example.ybook.LIBROS.libros;
-import com.example.ybook.PaginaPrincipal;
-import com.example.ybook.R;
+import com.example.ybook.USUARIOS.Informacion_usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,10 +23,10 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Pattern;
 
-public class Informacion_usuario extends AppCompatActivity {
+public class EditarPerfil extends AppCompatActivity {
 
+    int idUsuario = 0;
     Usuario usuarioBBDD;
 
     TextView nombreUsuario;
@@ -47,18 +41,11 @@ public class Informacion_usuario extends AppCompatActivity {
     Button editarUsuario;
     Button cancelarCambios;
     Button aceptarCambios;
-    Button eliminarUsuario;
-    Button resetPassword;
-
-    int idUsuario = 0;
-    int idUsuarioOriginal =0;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informacion_usuario);
+        setContentView(R.layout.activity_editar_perfil);
 
         nombreUsuario = findViewById(R.id.txtNombreUsuario);
         apellidosUsuario= findViewById(R.id.txtApellidos);
@@ -72,21 +59,16 @@ public class Informacion_usuario extends AppCompatActivity {
         editarUsuario= findViewById(R.id.btnEditarInfoUsuario);
         cancelarCambios = findViewById(R.id.btnCancelarCambios);
         aceptarCambios = findViewById(R.id.btnActualizarCambios);
-        eliminarUsuario = findViewById(R.id.btnEliminarUsuario);
-        resetPassword = findViewById(R.id.btnResetearPasswordUsuario);
 
 
         Intent intent = getIntent();
-        String usernameOriginal = intent.getStringExtra("username");
-        idUsuarioOriginal = intent.getIntExtra("id",0);
-
-
+        idUsuario = intent.getIntExtra("ID",0);
 
         Connection conn = conexionBD();
         try {
             if(conn!=null){
                 Statement stm = conexionBD().createStatement();
-                ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE UsuarioID="+idUsuarioOriginal);
+                ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE UsuarioID="+idUsuario);
 
                 if(rs.next()){
                     usuarioBBDD=new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9),rs.getString(10),rs.getString(11));
@@ -108,7 +90,6 @@ public class Informacion_usuario extends AppCompatActivity {
         }
 
 
-
         editarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,73 +108,6 @@ public class Informacion_usuario extends AppCompatActivity {
                 aceptarCambios.setVisibility(View.GONE);
                 cancelarCambios.setVisibility(View.GONE);
             }
-        });
-
-        resetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    if(conn!=null){
-                        String passwordDefault="Holamundo";
-                        PreparedStatement stm = conexionBD().prepareStatement("UPDATE Usuarios SET Password='"+ passwordDefault +"' WHERE UsuarioID='"+ idUsuarioOriginal +"'");
-                        stm.executeUpdate();
-
-                        Toast.makeText(Informacion_usuario.this, "CONTRASEÑA DEL USUARIO RESETEADA", Toast.LENGTH_SHORT).show();
-                        Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
-                        startActivity(intent2);
-
-                    }
-
-                }catch (Exception exception){
-                    Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
-                    exception.printStackTrace();
-                }
-            }
-        });
-
-        eliminarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                try {
-                    if(conn!=null){
-
-
-                        PreparedStatement stm4 = conexionBD().prepareStatement("DELETE FROM Roles WHERE ID_Usuario="+idUsuario);
-                        stm4.executeUpdate();
-
-                        PreparedStatement stm3 = conexionBD().prepareStatement("DELETE FROM Valoraciones WHERE UsuarioID="+idUsuario);
-                        stm3.executeUpdate();
-
-                        PreparedStatement stm2 = conexionBD().prepareStatement("DELETE FROM MisLibros WHERE ID_Usuario="+idUsuario);
-                        stm2.executeUpdate();
-
-                        PreparedStatement stm = conexionBD().prepareStatement("DELETE FROM Usuarios WHERE UsuarioID="+idUsuario);
-                        stm.executeUpdate();
-
-                        Toast.makeText(Informacion_usuario.this, "USUARIO ELIMINADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
-                                startActivity(intent2);
-                                finish();
-                            }
-                        },2000);
-
-                    }else{
-                        Toast.makeText(Informacion_usuario.this,"Error en la conexion", Toast.LENGTH_SHORT).show();
-                    }
-
-                }catch (Exception exception){
-                    Toast.makeText(getApplicationContext(),"ERROR EN LA ELIMINACIÓN DEL LIBRO",Toast.LENGTH_SHORT).show();
-                    exception.printStackTrace();
-                }
-
-            }
-
         });
 
         aceptarCambios.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +135,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "El nombre no puede quedar vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "El nombre no puede quedar vacio", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación de los apellidos
@@ -234,7 +148,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "Los apelldios no pueden quedar vacios", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "Los apelldios no pueden quedar vacios", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación del email
@@ -245,15 +159,15 @@ public class Informacion_usuario extends AppCompatActivity {
                     }else{
                         if(Patterns.EMAIL_ADDRESS.matcher(emailUsuario.getText()).matches()){
                             emailActualizar=(String)emailUsuario.getText().toString();
-                            Toast.makeText(Informacion_usuario.this, "EMAIL CORRECTO", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarPerfil.this, "EMAIL CORRECTO", Toast.LENGTH_SHORT).show();
 
                         }else{
-                            Toast.makeText(Informacion_usuario.this, "El email no tiene el formato correcto", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarPerfil.this, "El email no tiene el formato correcto", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "El email no puede quedar vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "El email no puede quedar vacio", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación de la fecha de nacimiento
@@ -271,11 +185,11 @@ public class Informacion_usuario extends AppCompatActivity {
                             Date fecha = sdf.parse(fechafecha);
                             fechaNacimientoActualizar = fechafecha;
                         }catch (ParseException e) {
-                            Toast.makeText(Informacion_usuario.this, "La fecha ingresada no tiene el formato correcto.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarPerfil.this, "La fecha ingresada no tiene el formato correcto.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "La fecha de publicación no puede quedar vacia", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "La fecha de publicación no puede quedar vacia", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación del genero
@@ -288,7 +202,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "El género no puede quedar vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "El género no puede quedar vacio", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación de la nacionalidad
@@ -301,7 +215,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "La nacionalidad no puede quedar vacía", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "La nacionalidad no puede quedar vacía", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación del username
@@ -337,7 +251,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "El username no puede quedar vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "El username no puede quedar vacio", Toast.LENGTH_SHORT).show();
                 }
 
                 //Validación del telefono
@@ -350,7 +264,7 @@ public class Informacion_usuario extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(Informacion_usuario.this, "El teléfono no puede quedar vacio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditarPerfil.this, "El teléfono no puede quedar vacio", Toast.LENGTH_SHORT).show();
                 }
 
                 if(nombreActualizar!=null && apellidosActualizar!=null && nacionalidadActualizar!=null && emailActualizar!=null && usernameActualizar!=null && generoActualizar!=null && telefonoActualizar!=0 && fechaNacimientoActualizar!=null){
@@ -361,8 +275,9 @@ public class Informacion_usuario extends AppCompatActivity {
                             PreparedStatement stm = conexionBD().prepareStatement("UPDATE Usuarios SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',Email='"+ emailActualizar +"',Username='"+ usernameActualizar +"',Genero='"+ generoActualizar +"',Telefono='"+ telefonoActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"' WHERE UsuarioID='"+ usuarioBBDD.getId() +"'");
                             stm.executeUpdate();
 
-                            Toast.makeText(Informacion_usuario.this, "DATOS USUARIO ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarPerfil.this, "DATOS USUARIO ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
                             Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
+                            intent2.putExtra("ID",idUsuario);
                             startActivity(intent2);
 
                         }
@@ -379,8 +294,6 @@ public class Informacion_usuario extends AppCompatActivity {
             }
 
         });
-
-
 
 
 

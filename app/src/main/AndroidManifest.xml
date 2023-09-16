@@ -16,6 +16,12 @@
         android:theme="@style/Theme.YBOOK"
         tools:targetApi="31">
         <activity
+            android:name=".Privacidad"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPerfil"
+            android:exported="false" />
+        <activity
             android:name=".AUTORES.Add_NuevoAutor"
             android:exported="false" />
         <activity

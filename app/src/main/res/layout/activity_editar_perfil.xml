@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarPerfil"
+    android:background="#9BDCFA">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="0.7">
+
+</RelativeLayout>
+
+
+<androidx.cardview.widget.CardView
+android:layout_width="match_parent"
+android:layout_height="715dp"
+android:layout_alignParentBottom="true"
+android:layout_margin="30dp"
+app:cardCornerRadius="28dp"
+android:id="@+id/card_view">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Nombre"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtNombreUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="text"
+        />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Apellidos"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="text" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Nacionalidad"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtNacionalidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="text" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Email"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtEmailUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="textEmailAddress" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Username"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="text" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Género"
+        android:fontFamily="@font/alata"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:inputType="text" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Teléfono"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="number" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="170dp"
+            android:layout_height="65dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Fecha Nacimiento"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtFechaNacimientoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="date" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+
+</LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDITAR USUARIO"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#A873FA"
+            app:cornerRadius="32dp"
+
+            android:layout_alignParentBottom="true"
+            android:id="@+id/btnEditarInfoUsuario"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCELAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#FF9195"
+            app:cornerRadius="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="160dp"
+            android:visibility="gone"
+            android:id="@+id/btnCancelarCambios"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACTUALIZAR"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#AAFAA1"
+            app:cornerRadius="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-140dp"
+            android:visibility="gone"
+            android:id="@+id/btnActualizarCambios"
+            />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

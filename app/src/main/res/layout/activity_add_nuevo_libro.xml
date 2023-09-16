@@ -126,11 +126,12 @@
                 android:fontFamily="@font/alata"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/txtAutor2"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:id="@+id/sp_autor"
+                android:spinnerMode="dialog"
+                android:prompt="@string/Autores"></Spinner>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
@@ -159,11 +160,6 @@
                         android:layout_height="match_parent"
                         android:inputType="number" />
 
-                    <EditText
-                        android:id="@+id/txtNumeroPaginas23"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="number" />
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -198,6 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="CREAR LIBRO"
+                android:id="@+id/btnAñadirLibro"
                 android:textSize="18dp"
                 android:textColor="#314BE4"
                 android:textStyle="bold"

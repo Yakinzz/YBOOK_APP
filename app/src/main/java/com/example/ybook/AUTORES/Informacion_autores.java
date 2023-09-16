@@ -279,6 +279,23 @@ public class Informacion_autores extends AppCompatActivity {
                                     fechaFallecimientoActualizar = fechaFallecimiento.getText().toString();
                                     Log.d(TAG, "onClick: fecha____"+fechaFallecimientoActualizar);
 
+                                    try {
+                                        if(conn!=null){
+
+                                            PreparedStatement stm = conexionBD().prepareStatement("UPDATE Autores SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"',FechaFallecimiento='"+ fechaFallecimientoActualizar +"' WHERE AutorID='"+ idAutorClicado +"'");
+                                            stm.executeUpdate();
+
+                                            Toast.makeText(Informacion_autores.this, "DATOS ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                            Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
+                                            startActivity(intent2);
+
+                                        }
+
+                                    }catch (Exception exception){
+                                        Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
+                                        exception.printStackTrace();
+                                    }
+
                                 }catch (ParseException e) {
                                     Toast.makeText(Informacion_autores.this, "La fecha de fallecimiento ingresada no tiene el formato correcto.", Toast.LENGTH_SHORT).show();
                                 }
@@ -292,29 +309,26 @@ public class Informacion_autores extends AppCompatActivity {
                             Toast.makeText(Informacion_autores.this, "La fecha de fallecimiento no puede quedar vacia", Toast.LENGTH_SHORT).show();
                         }
                     } else if (rb_no.isChecked()) {
-                        Toast.makeText(Informacion_autores.this, fechaFallecimientoActualizar+"__BAD", Toast.LENGTH_SHORT).show();
-                    }
 
+                        try {
+                            if(conn!=null){
 
-                    /*
-                    try {
-                        if(conn!=null){
+                                PreparedStatement stm = conexionBD().prepareStatement("UPDATE Autores SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"',FechaFallecimiento='"+ null +"' WHERE AutorID='"+ idAutorClicado +"'");
+                                stm.executeUpdate();
 
-                            PreparedStatement stm = conexionBD().prepareStatement("UPDATE Autores SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"',FechaFallecimiento='"+ fechaFallecimientoActualizar +"' WHERE AutorID='"+ idAutorClicado +"'");
-                            stm.executeUpdate();
+                                Toast.makeText(Informacion_autores.this, "DATOS ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
+                                startActivity(intent2);
 
-                            Toast.makeText(Informacion_autores.this, "DATOS ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
-                            Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
-                            startActivity(intent2);
+                            }
 
+                        }catch (Exception exception){
+                            Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
+                            exception.printStackTrace();
                         }
-
-                    }catch (Exception exception){
-                        Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
-                        exception.printStackTrace();
                     }
 
-                     */
+
                 }else{
                     Toast.makeText(getApplicationContext(),"NO ESTÁ TODO BIEN",Toast.LENGTH_SHORT).show();
                 }
@@ -350,12 +364,12 @@ public class Informacion_autores extends AppCompatActivity {
         fechaNacimiento.setFocusableInTouchMode(a);
 
         rb_si.setClickable(a);
-
         rb_si.setEnabled(a);
+        rb_si.setFocusable(a);
         rb_si.setFocusableInTouchMode(a);
 
         rb_no.setClickable(a);
-
+        rb_no.setEnabled(a);
         rb_no.setEnabled(a);
         rb_no.setFocusableInTouchMode(a);
 

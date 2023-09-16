@@ -113,7 +113,7 @@
                 android:id="@+id/txtFechaNacimientoNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="datetime" />
 
             <View
                 android:layout_width="wrap_content"
@@ -140,16 +140,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="50dp"
-                        android:clickable="false"
-                        android:enabled="false"
                         android:text="SI"></RadioButton>
 
                     <RadioButton
                         android:id="@+id/rb_fallecidoNOnuevo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:enabled="false"
                         android:text="NO"></RadioButton>
                 </RadioGroup>
 
@@ -165,13 +161,14 @@
                 android:alpha="0.7"
                 android:text="Fecha Fallecimiento"
                 android:fontFamily="@font/alata"
+                android:id="@+id/lb_FallecidoNuevo"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txtFechaFallecimientoNuevoAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="datetime" />
 
 
 
@@ -183,6 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="CREAR AUTOR"
+                android:id="@+id/btnNuevoAutor"
                 android:backgroundTint="#FD9BD6"
                 android:textColor="@color/black"
                 android:textStyle="bold"
