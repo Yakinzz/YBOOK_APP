@@ -70,36 +70,40 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Connection conn = conexionBD();
+                Boolean incorrecto = false;
+                Boolean usuario = false;
                 try {
                     if(conn!=null){
                         Statement stm = conexionBD().createStatement();
-                        ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
+                        ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE Username='"+txtUsername.getText().toString()+"'");
 
-                        if(rs.next()){
+                        if (rs.next()){
                             idUsuario = rs.getInt(1);
                             String username = rs.getString(9);
                             String passowrd = rs.getString(10);
 
-                            if(username.equals(txtUsername.getText().toString()) && passowrd.equals(txtPassword.getText().toString())){
-                                if(rs.getString(11).equals("Admin")){
-                                    Intent intent = new Intent(LoginActivity.this,PaginaPrincipal.class);
-                                    intent.putExtra("ID",idUsuario);
-                                    startActivity(intent);
-                                    finish();
+                            if(rs.getString(11).equals("Admin")){
+                                if(username.equals(txtUsername.getText().toString()) && passowrd.equals(txtPassword.getText().toString())){
+                                        Intent intent = new Intent(LoginActivity.this,PaginaPrincipal.class);
+                                        intent.putExtra("ID",idUsuario);
+                                        startActivity(intent);
+                                        finish();
                                 }else{
-                                    Toast.makeText(getApplicationContext(),"El usuario no es administrador",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Contraseña incorrecta.",Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(getApplicationContext(),"Nombre de usuario o Contraseña Incorrecto",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Este usuario no es Admnistrador",Toast.LENGTH_SHORT).show();
                             }
                         }else{
-                            Toast.makeText(getApplicationContext(),"USUARIO NO ENCONTRADO",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Usuario no encontrado",Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 }catch (Exception exception){
                     Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
 

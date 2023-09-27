@@ -313,7 +313,7 @@ public class Informacion_autores extends AppCompatActivity {
                         try {
                             if(conn!=null){
 
-                                PreparedStatement stm = conexionBD().prepareStatement("UPDATE Autores SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"',FechaFallecimiento='"+ null +"' WHERE AutorID='"+ idAutorClicado +"'");
+                                PreparedStatement stm = conexionBD().prepareStatement("UPDATE Autores SET Nombre='"+ nombreActualizar +"',Apellidos='"+ apellidosActualizar +"',Nacionalidad='"+ nacionalidadActualizar +"',FechaNacimiento='"+ fechaNacimientoActualizar +"',FechaFallecimiento="+ null +" WHERE AutorID='"+ idAutorClicado +"'");
                                 stm.executeUpdate();
 
                                 Toast.makeText(Informacion_autores.this, "DATOS ACTUALIZADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();

@@ -86,7 +86,7 @@ public class Add_NuevoUsuario extends AppCompatActivity {
                 if(!(emailUsuario.getText().toString().isEmpty())){
                     if(Patterns.EMAIL_ADDRESS.matcher(emailUsuario.getText()).matches()){
                         emailNuevo=(String)emailUsuario.getText().toString();
-                        Toast.makeText(Add_NuevoUsuario.this, "EMAIL CORRECTO", Toast.LENGTH_SHORT).show();
+
 
                     }else{
                         Toast.makeText(Add_NuevoUsuario.this, "El email no tiene el formato correcto", Toast.LENGTH_SHORT).show();
@@ -175,7 +175,7 @@ public class Add_NuevoUsuario extends AppCompatActivity {
                         if(conn!=null){
                             String passwordDefault = "Holamundo";
                             String rolDefault = "Usuario";
-                            PreparedStatement stm = conexionBD().prepareStatement("INSERT INTO Autores (Nombre,Apellidos,Email,FechaNacimiento,Genero,Nacionalidad,Telefono,Username,Password,Rol) VALUES ('"+nombreNuevo+"','"+apellidosNuevo+"','"+emailNuevo+"','"+fechaNacimientoNuevo+"','"+generoNuevo+"','"+nacionalidadNuevo+"','"+telefonoNuevo+"','"+usernameNuevo+"','"+passwordDefault+"','"+rolDefault+"')");
+                            PreparedStatement stm = conexionBD().prepareStatement("INSERT INTO Usuarios (Nombre,Apellidos,Email,FechaNacimiento,Genero,Nacionalidad,Telefono,Username,Password,Rol) VALUES ('"+nombreNuevo+"','"+apellidosNuevo+"','"+emailNuevo+"','"+fechaNacimientoNuevo+"','"+generoNuevo+"','"+nacionalidadNuevo+"','"+telefonoNuevo+"','"+usernameNuevo+"','"+passwordDefault+"','"+rolDefault+"')");
                             stm.executeUpdate();
 
                             Toast.makeText(Add_NuevoUsuario.this, "USUARIO CREADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();

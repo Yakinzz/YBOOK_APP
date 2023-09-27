@@ -64,6 +64,7 @@ public class EditarPerfil extends AppCompatActivity {
         Intent intent = getIntent();
         idUsuario = intent.getIntExtra("ID",0);
 
+
         Connection conn = conexionBD();
         try {
             if(conn!=null){

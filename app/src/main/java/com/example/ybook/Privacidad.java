@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ybook.AUTORES.Informacion_autores;
 import com.example.ybook.Entidades.Usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.regex.Matcher;
@@ -80,9 +82,24 @@ public class Privacidad extends AppCompatActivity {
                                     Matcher matcher = pattern.matcher(passwordNueva.getText().toString());
 
                                     if(matcher.matches()){
-                                        Toast.makeText(Privacidad.this, "CONTRASEÑA VALIDA", Toast.LENGTH_SHORT).show();
+                                        try {
+                                            if(conn!=null){
+
+                                                PreparedStatement stm = conexionBD().prepareStatement("UPDATE Usuarios SET Password='"+ passwordNueva.getText().toString() +"' WHERE UsuarioID="+ idUsuario +"");
+                                                stm.executeUpdate();
+
+                                                Toast.makeText(Privacidad.this, "CONTRASEÑA ACTUALIZADA CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                                Intent intent2 = new Intent(getApplicationContext(), PaginaPrincipal.class);
+                                                startActivity(intent2);
+
+                                            }
+
+                                        }catch (Exception exception){
+                                            Toast.makeText(getApplicationContext(),"ERROR EN LA CONSULTA",Toast.LENGTH_SHORT).show();
+                                            exception.printStackTrace();
+                                        }
                                     }else{
-                                        Toast.makeText(Privacidad.this, "NO VALE PARA NADA", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Privacidad.this, "CONTRASEÑA NO VALIDA", Toast.LENGTH_SHORT).show();
                                     }
                                 }else{
                                     Toast.makeText(Privacidad.this, "Las nueva contraseña es la misma que la actual.", Toast.LENGTH_SHORT).show();
